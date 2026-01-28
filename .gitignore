@@ -1,0 +1,22 @@
+# Sensitive files
+configvisionapi.json
+config_*.json
+*.env
+*.key
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temporary files
+tmp*
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+
+# Data directories
+aggregated_*/
+marketstate_*/
+realtime_*/
