@@ -1,0 +1,38 @@
+{
+  "trading": {
+      "hyperliquid": {
+            "private_key": "0xe4780c585194bad0d600633eb3e4ed22916d3223b80ef443341b5aea426d18e1",
+            "wallet_address": "0xE9Ca51cb0eE8f86A1AD9a4E43bcfbc1B8243047C"
+      }
+  },
+  "market_barometer": {
+    "major_coins": {
+      "BTC": 4.0,
+      "ETH": 3.0,
+      "SOL": 2.0,
+      "BNB": 1.5,
+      "XRP": 1.2,
+      "ADA": 1.0,
+      "AVAX": 1.0,
+      "MATIC": 0.8,
+      "DOT": 0.8,
+      "LINK": 0.8
+    },
+    "state_thresholds": {
+      "risk_on_threshold": 5.0,
+      "risk_off_threshold": -5.0
+    },
+    "confidence_weights": {
+      "consensus_weight": 0.3,
+      "score_magnitude_weight": 0.25,
+      "timeframe_alignment_weight": 0.25,
+      "major_coin_weight": 0.2
+    },
+    "verbose": true
+  },
+  "monitoring": {
+    "update_interval_seconds": 30,
+    "verbose": true,
+    "log_to_file": false
+  }
+}
