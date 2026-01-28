@@ -1,0 +1,39 @@
+[
+  {
+    "id": "POS-1769033503-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 131.60500000000002,
+    "beta_at_entry": 942.6716510543253,
+    "size": 1.0,
+    "timestamp": "2026-01-21T22:11:43.703109+00:00",
+    "pnl": -12.471489291491526,
+    "direction": "LONG",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 7.598495497891417,
+        "entry_price": 131.60500000000002,
+        "value_usd": 1000.0,
+        "pnl": -12.765472436457632,
+        "current_price": 129.925
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6532.958777030118,
+        "entry_price": 0.15306999999999998,
+        "value_usd": 1000.0,
+        "pnl": 0.29398314496610534,
+        "current_price": 0.15302500000000002
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "LONG",
+      "total_pnl": -12.395504336512682
+    },
+    "current_price": 129.925
+  }
+]

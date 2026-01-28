@@ -1,0 +1,170 @@
+{
+  "provider": "chatgpt",
+  "providers": {
+    "chatgpt": {
+      "api_key": "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",
+      "model": "gpt-4o-mini"
+    },
+    "google": {
+      "api_key": "",
+      "model": ""
+    },
+    "claude": {
+      "api_key": "",
+      "model": ""
+    }
+  },
+  "asset": "SOL/MELANIA",
+  "vision": {
+    "json_dir": "visiondata",
+    "image_dir": "visionimages"
+  },
+  "state_stream_file": "state_stream.jsonl",
+  "vision_call_budget": {
+    "max_calls_per_minute": 12,
+    "max_images_per_tick": 1,
+    "downscale_max_width": 1280
+  },
+  "trading": {
+    "tf_weights": {
+      "m1": 1.0,
+      "m5": 0.85,
+      "m15": 0.7,
+      "h1": 0.6
+    },
+    "recency_half_life_factor": 3,
+    "recency_min_floor": 0.05,
+    "consensus_min_confidence": 0.6,
+    "hysteresis_delta": 0.1,
+    "hyperliquid": {
+      "private_key": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+      "wallet_address": "0x1234567890123456789012345678901234567890"
+    },
+    "telemetry": {
+      "enabled": true,
+      "primary_asset": "SOL",
+      "reference_asset": "MELANIA",
+      "zscore_window": 20,
+      "bootstrap_bars": 50,
+      "rsi_period": 14,
+      "data_for_regression": true,
+      "historical_lookback": 300
+    }
+  },
+  "market_barometer": {
+    "enabled": true,
+    "source": "marketstate/latest_barometer.json",
+    "update_interval_minutes": 15,
+    "prior_strength": 0.2,
+    "market_config": {
+      "major_coins": {
+        "BTC": 4.0,
+        "ETH": 3.0,
+        "SOL": 2.0,
+        "BNB": 2.0,
+        "XRP": 1.5,
+        "AVAX": 1.5
+      },
+      "state_thresholds": {
+        "risk_on_threshold": 5.0,
+        "risk_off_threshold": -5.0
+      },
+      "confidence_weights": {
+        "consensus_weight": 0.3,
+        "score_magnitude_weight": 0.25,
+        "timeframe_alignment_weight": 0.25,
+        "major_coin_weight": 0.2
+      },
+      "verbose": true
+    },
+    "decision": {
+      "risk_on_size_boost": 0.3,
+      "risk_off_size_cut": 0.5,
+      "block_longs_in_risk_off": true,
+      "block_shorts_in_risk_on": true,
+      "block_conf_threshold": 0.6
+    },
+    "debug": {
+      "include_in_snapshot": true
+    }
+  },
+  "pair_trading": {
+    "method": "regression",
+    "analysis_type": "regression",
+    "regression_window": 250,
+    "zscore_window": 60,
+    "correlation_window": 100,
+    "beta_smoothing_window": 50,
+    "health_thresholds": {
+      "min_correlation": 0.6,
+      "max_beta_drift_pct": 15.0,
+      "min_r_squared": 0.3
+    },
+    "bands": {
+      "z_entry": 2.0,
+      "z_stop": 3.0,
+      "z_exit": 0.5
+    },
+    "mean_reversion_enabled": true
+  },
+  "ai_vision": {
+    "regression_analysis": {
+      "enabled": true,
+      "focus_on_residuals": true,
+      "z_score_thresholds": {
+        "strong_signal": 2.5,
+        "moderate_signal": 1.5,
+        "weak_signal": 1.0,
+        "neutral": 0.5
+      },
+      "confidence_band_analysis": true
+    },
+    "rectangle_detection": {
+      "enabled": false,
+      "note": "Not applicable for regression method"
+    },
+    "schema_version": "1.5"
+  },
+  "data_sources": {
+    "regression_data_requirements": {
+      "min_periods": 100,
+      "preferred_periods": 300,
+      "max_periods": 500
+    }
+  },
+  "regression_engine": {
+    "method": "OLS",
+    "rolling_window": 250,
+    "min_periods": 60,
+    "update_frequency": "every_tick",
+    "outlier_detection": {
+      "enabled": true,
+      "z_score_threshold": 4.0,
+      "max_outliers_pct": 5.0
+    },
+    "validation": {
+      "cross_validation_enabled": false,
+      "train_test_split": 0.8,
+      "min_r_squared_threshold": 0.3
+    },
+    "diagnostics": {
+      "save_regression_plots": false,
+      "log_regression_params": true,
+      "monitor_residuals": true,
+      "alert_on_regime_change": true
+    }
+  },
+  "monitoring": {
+    "health_alerts": {
+      "enabled": true,
+      "correlation_drop_threshold": 0.2,
+      "r_squared_drop_threshold": 0.3,
+      "beta_drift_alert_threshold": 20.0
+    },
+    "performance_tracking": {
+      "track_signal_quality": true,
+      "track_mean_reversion_success": true,
+      "save_performance_metrics": true
+    }
+  }
+}

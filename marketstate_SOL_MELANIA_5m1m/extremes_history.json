@@ -1,0 +1,185 @@
+{
+  "timeframes": {
+    "5s": {
+      "extremes": [
+        {
+          "zscore": 1.0000017102265806,
+          "timestamp": "2026-01-27T21:31:31+00:00",
+          "timeframe": "5s",
+          "synthetic": false
+        },
+        {
+          "zscore": 1.0000017102265806,
+          "timestamp": "2026-01-27T21:31:32+00:00",
+          "timeframe": "5s",
+          "synthetic": false
+        },
+        {
+          "zscore": 0.38,
+          "timestamp": "2026-01-27T16:01:15.607872+00:00",
+          "timeframe": "5s",
+          "synthetic": true,
+          "label": "Very strong SHORT extreme (5s)"
+        },
+        {
+          "zscore": -6.962017544279419,
+          "timestamp": "2026-01-27T20:05:48+00:00",
+          "timeframe": "5s",
+          "synthetic": false
+        },
+        {
+          "zscore": -6.873814609614007,
+          "timestamp": "2026-01-27T20:05:46+00:00",
+          "timeframe": "5s",
+          "synthetic": false
+        },
+        {
+          "zscore": -6.697408740282973,
+          "timestamp": "2026-01-27T20:05:45+00:00",
+          "timeframe": "5s",
+          "synthetic": false
+        },
+        {
+          "zscore": -5.568527586186052,
+          "timestamp": "2026-01-27T20:05:50+00:00",
+          "timeframe": "5s",
+          "synthetic": false
+        }
+      ],
+      "metadata": {
+        "last_updated": "2026-01-28T07:45:50.597141+00:00",
+        "timeframe": "5s",
+        "total_extremes": 7,
+        "has_synthetic": true,
+        "is_primary_timeframe": false
+      }
+    },
+    "1m": {
+      "extremes": [
+        {
+          "zscore": 1.0005455378336932,
+          "timestamp": "2026-01-28T01:10:35+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        },
+        {
+          "zscore": 1.0005455378336932,
+          "timestamp": "2026-01-28T01:10:37+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        },
+        {
+          "zscore": 1.0005455378336932,
+          "timestamp": "2026-01-28T01:10:51+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        },
+        {
+          "zscore": -3.8079627721797507,
+          "timestamp": "2026-01-28T07:45:48+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        },
+        {
+          "zscore": -3.8079627721797507,
+          "timestamp": "2026-01-28T07:45:49+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        },
+        {
+          "zscore": -3.7693721804877423,
+          "timestamp": "2026-01-28T07:45:38+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        },
+        {
+          "zscore": -3.7693721804877423,
+          "timestamp": "2026-01-28T07:45:39+00:00",
+          "timeframe": "1m",
+          "synthetic": false
+        }
+      ],
+      "metadata": {
+        "last_updated": "2026-01-28T07:45:50.597141+00:00",
+        "timeframe": "1m",
+        "total_extremes": 7,
+        "has_synthetic": false,
+        "is_primary_timeframe": true
+      }
+    },
+    "1h": {
+      "extremes": [
+        {
+          "zscore": 2.4071505907925967,
+          "timestamp": "2026-01-27T20:21:14+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": 1.5282795131586817,
+          "timestamp": "2026-01-28T07:28:08+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": 1.5282795131586817,
+          "timestamp": "2026-01-28T07:28:10+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": 1.5282795131586817,
+          "timestamp": "2026-01-28T07:28:11+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": -2.4174090361123723,
+          "timestamp": "2026-01-28T00:16:59+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": -2.4174090361123723,
+          "timestamp": "2026-01-28T00:17:01+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": -2.4174090361123723,
+          "timestamp": "2026-01-28T00:17:03+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        },
+        {
+          "zscore": -2.3855957939154933,
+          "timestamp": "2026-01-28T00:16:47+00:00",
+          "timeframe": "1h",
+          "synthetic": false
+        }
+      ],
+      "metadata": {
+        "last_updated": "2026-01-28T07:45:50.597141+00:00",
+        "timeframe": "1h",
+        "total_extremes": 8,
+        "has_synthetic": false,
+        "is_primary_timeframe": false
+      }
+    }
+  },
+  "global_metadata": {
+    "last_updated": "2026-01-28T07:45:50.597141+00:00",
+    "primary_timeframe": "1m",
+    "supported_timeframes": [
+      "5s",
+      "1m",
+      "1h"
+    ],
+    "retention_hours": 168,
+    "window_size": 8,
+    "min_threshold": 1.0,
+    "extreme_history_depth": 3,
+    "version": "3.1",
+    "storage_location": "unified_with_marketstate"
+  }
+}

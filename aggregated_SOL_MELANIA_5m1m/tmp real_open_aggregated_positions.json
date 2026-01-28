@@ -1,0 +1,53 @@
+{
+  "positions": [
+    {
+      "schema_version": "2.1.0",
+      "aggregate_id": "AGG-NEW-1768633708",
+      "status": "OPEN",
+      "created_at": "2026-01-17T15:08:28.230758+08:00",
+      "asset_pair": "SOL/MELANIA",
+      "component_trades": [
+        {
+          "trade_id": "REAL-1768633708",
+          "direction": "TradeDirection.SHORT",
+          "strategy": "htf_bias_ltf_timing",
+          "timestamp_open": "2026-01-17T15:08:28.230758+08:00",
+          "entry_price_a": 143.7042,
+          "quantity_a": -6.96,
+          "quantity_b": 5836.0,
+          "regime_context": {
+            "note": "Command Import",
+            "entry_analysis_summary": "Manual Import via Command Sync: htf_bias_ltf_timing"
+          },
+          "execution_quality": {
+            "active_entry_strategy": "htf_bias_ltf_timing"
+          },
+          "entry_price_b": 0.1714
+        }
+      ],
+      "aggregated_metrics": {
+        "total_quantity_a": -6.96,
+        "weighted_avg_entry_price_a": 143.7042,
+        "actual_component_count": 1,
+        "strategy_config_tracking": true,
+        "total_quantity_b": 5836.0,
+        "weighted_avg_entry_price_b": 0.1714
+      },
+      "pnl_tracking": {
+        "floating_pnl_usd": -28.974348000000226,
+        "calculation_timestamp": "2026-01-19T02:27:01.018809+08:00",
+        "valuation_mode": "BID_ASK"
+      },
+      "strategy_config_tracking": true,
+      "lifecycle_analysis": {
+        "min_correlation_life": -0.09110016669222282,
+        "min_vol_sync_life": 0.20317771220537253,
+        "max_floating_pnl_usd": -3.162168000000049,
+        "min_floating_pnl_usd": -48.576868000000154
+      }
+    }
+  ],
+  "metadata": {
+    "schema_version": "2.1.0"
+  }
+}

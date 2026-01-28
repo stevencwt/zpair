@@ -1,0 +1,18 @@
+[
+  {
+    "id": "POS-1768935685-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 127.345,
+    "size": 1.0,
+    "timestamp": "2026-01-20T19:01:25.969653+00:00",
+    "pnl": 0.2400000000000091,
+    "direction": "SHORT",
+    "type": "INITIAL",
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "SHORT",
+      "total_pnl": 0.25
+    },
+    "current_price": 127.10499999999999
+  }
+]

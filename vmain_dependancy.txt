@@ -1,0 +1,137 @@
+================================================================================
+          V14s TRADING SYSTEM - FULL DEPENDENCY & ARCHITECTURE MAP (V2)
+================================================================================
+
+[1] ENTRY POINT (THE CONDUCTOR)
+--------------------------------------------------------------------------------
+1. vmain_v14s.py
+   ├── Description: Main orchestration script. Initializes config, services, and run loop.
+   ├── Direct Dependencies:
+   │   ├── config_manager.py
+   │   ├── telemetry_service.py
+   │   ├── modular_decision_engine.py
+   │   ├── unified_trade_engine.py
+   │   ├── market_barometer.py
+   │   ├── extreme_tracker.py
+   │   ├── chart_orchestrator.py
+   │   ├── market_state_manager.py
+   │   ├── debug_utils.py
+   │   └── symbol_utils.py
+   └── Conditional/Optional Dependencies:
+       └── config_directory_validator.py (Optional/Debug)
+
+[2] CORE INFRASTRUCTURE (THE UTILITIES)
+--------------------------------------------------------------------------------
+2. config_manager.py
+   └── Description: Loads and validates JSON configurations.
+3. debug_utils.py
+   └── Description: Centralized logging (`DebugLogger`) and performance timing.
+4. symbol_utils.py
+   └── Description: Parses asset strings (e.g., "SOL/MELANIA").
+5. config_directory_validator.py (Optional)
+   └── Description: Checks if required folders exist on startup.
+
+[3] DATA LAYER (THE EYES)
+--------------------------------------------------------------------------------
+6. telemetry_service.py
+   ├── Description: Abstract manager deciding between "Legacy" and "Buffer" modes.
+   ├── Imports:
+   │   ├── telemetry_provider.py
+   │   └── multi_timeframe_buffers.py
+7. telemetry_provider.py
+   ├── Description: Connects to exchange APIs to fetch candles and L2 data.
+   ├── Imports:
+   │   ├── hyperliquid_utils_adapter.py (Exchange Interface)
+   │   ├── regression_core.py (Math)
+   │   ├── zscore_engine.py (Math)
+   │   └── fairvalue_builder.py (Math)
+8. multi_timeframe_buffers.py
+   ├── Description: Manages in-memory circular buffers for 5s/1m/1h data.
+   └── Imports: regression_core.py
+9. market_state_manager.py
+   └── Description: Handles persistence (saving `marketstate.json` to disk/SharedMemory).
+
+[4] MATH & QUANT ENGINE (THE PHYSICS)
+--------------------------------------------------------------------------------
+10. regression_core.py
+    └── Description: Calculates Alpha, Beta, and R-Squared.
+11. zscore_engine.py
+    └── Description: Normalizes spread deviations into Z-Scores.
+12. fairvalue_builder.py
+    └── Description: Calculates theoretical "Fair Value" prices.
+
+[5] STRATEGY LAYER (THE BRAIN)
+--------------------------------------------------------------------------------
+13. modular_decision_engine.py
+    ├── Description: Central logic router. Imports ALL strategies to build the toolbox.
+    ├── Critical Strategy Imports:
+    │   ├── trading_strategies.py
+    │   ├── hit_and_run_profit.py
+    │   ├── let_profit_run_profit.py  (Recently Added)
+    │   ├── trailing_stop_profit.py   (Recently Added)
+    │   ├── simple_scaling_strategy.py
+    │   └── extreme_scaling_strategy.py
+    └── Helper Imports:
+        └── position_aggregator.py    (Helper for position math)
+14. trading_strategies.py
+    └── Description: Core entry logic (e.g., `HTFBiasLTFTimingEntry`).
+15. hit_and_run_profit.py
+    └── Description: Fixed target exits (e.g., $5.33 profit).
+16. let_profit_run_profit.py
+    └── Description: Mean-reversion exits (holding until Z-Score returns to 0).
+17. trailing_stop_profit.py
+    └── Description: Dynamic trailing stop logic.
+18. simple_scaling_strategy.py
+    └── Description: Standard position sizing (DCA) logic.
+19. extreme_scaling_strategy.py
+    └── Description: Advanced scaling during Z-Score extremes.
+20. extreme_tracker.py
+    └── Description: Tracks historical Z-Score extremes across timeframes.
+21. market_barometer.py
+    └── Description: High-level risk filter (Risk On/Risk Off).
+22. position_aggregator.py
+    └── Description: Helper module to aggregate position data for the strategy engine.
+
+[6] EXECUTION LAYER (THE MUSCLE)
+--------------------------------------------------------------------------------
+23. unified_trade_engine.py
+    ├── Description: Manages portfolio state, PnL calculations, and order routing.
+    ├── Imports:
+    │   ├── trade_execution_engine.py
+    │   ├── hyper_market_adapter.py
+    │   └── config_updater.py (Helper)
+24. trade_execution_engine.py
+    └── Description: Handles atomic order placement and retries.
+25. hyper_market_adapter.py
+    └── Description: WRITE-access adapter. Sends signed orders to Hyperliquid.
+26. hyperliquid_utils_adapter.py
+    └── Description: READ-ONLY adapter. Fetches L2 book and account state.
+27. config_updater.py
+    └── Description: Helper to write dynamic config changes back to JSON.
+
+[7] VISUALIZATION LAYER (THE FACE)
+--------------------------------------------------------------------------------
+28. chart_orchestrator.py
+    ├── Description: Generates PNG dashboards.
+    ├── Imports:
+    │   ├── panel_base.py
+    │   ├── fair_value_panel.py
+    │   ├── ratio_panel.py
+    │   ├── zscore_panel.py
+    │   └── dual_axis_panel.py
+
+[8] INDEPENDENT TOOLS (RUN SEPARATELY)
+--------------------------------------------------------------------------------
+29. schedule_enforcer.py
+    ├── Description: Enforces trading hours by sending HTTP commands to vmain.
+    ├── Config: config_schedule.json
+    └── Dependencies: requests library
+
+[9] CONFIGURATION & WEB
+--------------------------------------------------------------------------------
+30. config_SOL_MELANIA_5m1m.json
+    └── Description: Main settings file.
+31. config_schedule.json
+    └── Description: Weekly schedule settings for schedule_enforcer.py.
+32. zsimple.html
+    └── Description: Frontend dashboard served by vmain's HTTP server.
