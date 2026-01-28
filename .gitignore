@@ -1,6 +1,7 @@
 # Sensitive files
 configvisionapi.json
 config_*.json
+mygit_token.txt
 *.env
 *.key
 
