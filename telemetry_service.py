@@ -27,7 +27,7 @@ class TelemetryService:
     Centralized telemetry service that handles both buffer-based and legacy data acquisition
     """
     
-    def __init__(self, provider, config_manager: ConfigurationManager, logger: Optional[DebugLogger] = None):
+    def __init__(self, provider, config_manager: ConfigurationManager, logger: Optional[DebugLogger] = None, trading_mode: Optional[Dict[str, Any]] = None):
         """
         Initialize telemetry service
         
@@ -40,6 +40,11 @@ class TelemetryService:
         self.config_manager = config_manager
         self.logger = logger or DebugLogger(True, "TELEMETRY")
         
+        # PHASE 2: Store trading mode for mode-aware data routing
+        self.trading_mode = trading_mode or {"name": "pairs_trading"}  # Default to pairs for backward compatibility
+        self.mode_name = self.trading_mode.get("name", "pairs_trading")
+        
+
         # Service state
         self.buffer_mode_enabled = False
         self.data_buffers = None
@@ -77,6 +82,16 @@ class TelemetryService:
                 self.logger.debug_print("Legacy telemetry imported successfully")
             except ImportError as e2:
                 raise TelemetryError(f"No telemetry system available: {e2}")
+        
+        # PHASE 2: Import single asset telemetry for non-pair modes
+        try:
+            from single_asset_telemetry import SingleAssetTelemetry
+            self.SingleAssetTelemetry = SingleAssetTelemetry
+            self.single_asset_available = True
+            self.logger.debug_print("Single asset telemetry imported successfully", "TELEMETRY")
+        except ImportError as e:
+            self.single_asset_available = False
+            self.logger.debug_print(f"Single asset telemetry not available: {e}", "TELEMETRY")
     
     def _initialize_service(self) -> None:
         """Initialize telemetry service based on configuration"""

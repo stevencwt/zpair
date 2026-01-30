@@ -568,11 +568,13 @@ class TradingApplication:
 
             # NEW: Initialize telemetry service (replaces complex buffer management)
             logger.debug_print("Initializing telemetry service...", "TELEMETRY")
+            # PHASE 2: Pass trading mode to telemetry service for mode-aware routing
             try:
                 self.telemetry_service = TelemetryService(
                     self.telemetry_provider, 
                     self.config_manager, 
-                    logger
+                    logger,
+                    self.trading_mode  # Added in Phase 1
                 )
                 
                 # Get service status
