@@ -44,6 +44,26 @@ from trailing_stop_profit import TrailingStopProfit
 from simple_scaling_strategy import SimpleScalingStrategy
 from extreme_scaling_strategy import ExtremeScalingStrategy
 
+# PHASE 3B: Import single-asset and dual-hybrid strategies
+try:
+    from hurst_rsi_entry_strategy import HurstRSIEntry
+    from fixed_target_exit_strategy import FixedTargetExit
+    from stop_loss_scaling_exit_strategy import StopLossScalingExit
+    SINGLE_ASSET_STRATEGIES_AVAILABLE = True
+except ImportError as e:
+    print(f"[MODULAR] Single asset strategies not available: {e}")
+    SINGLE_ASSET_STRATEGIES_AVAILABLE = False
+
+try:
+    from dual_hybrid_entry_strategy import DualHybridEntry
+    from alternating_scaling_exit_strategy import AlternatingScalingExit
+    DUAL_HYBRID_STRATEGIES_AVAILABLE = True
+except ImportError as e:
+    print(f"[MODULAR] Dual hybrid strategies not available: {e}")
+    DUAL_HYBRID_STRATEGIES_AVAILABLE = False
+
+
+
 # Import aggregator for unified system
 from position_aggregator import PositionAggregator
 
@@ -161,40 +181,42 @@ class ModularDecisionEngine:
             }
             
         elif self.mode_name == "single_asset":
-            # PHASE 3: Single asset strategies (when implemented)
-            # For now, use placeholder that will trigger "not implemented" message
-            self.ENTRY_STRATEGIES = {}
-            self.TAKE_PROFIT_STRATEGIES = {}
-            self.CUT_LOSS_STRATEGIES = {}
-            
-            print(f"[MODULAR] Single asset mode detected - strategies not yet implemented")
-            print(f"[MODULAR] Falling back to pairs trading strategies for now")
-            
-            # Fallback to pairs strategies temporarily
-            self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
-            self.TAKE_PROFIT_STRATEGIES = {"hit_and_run_profit": HitAndRunProfit}
-            self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
+            # PHASE 3B: Single asset strategies
+            if SINGLE_ASSET_STRATEGIES_AVAILABLE:
+                self.ENTRY_STRATEGIES = {
+                    "hurst_rsi_entry": HurstRSIEntry,
+                }
+                self.TAKE_PROFIT_STRATEGIES = {
+                    "fixed_target_exit": FixedTargetExit,
+                }
+                self.CUT_LOSS_STRATEGIES = {
+                    "stop_loss_scaling_exit": StopLossScalingExit,
+                }
+                print(f"[MODULAR] Single asset strategies loaded successfully")
+            else:
+                print(f"[MODULAR] Single asset strategies not available - fallback to pairs")
+                self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
+                self.TAKE_PROFIT_STRATEGIES = {"hit_and_run_profit": HitAndRunProfit}
+                self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
             
         elif self.mode_name == "dual_hybrid":
-            # PHASE 3: Dual hybrid strategies (when implemented)
-            self.ENTRY_STRATEGIES = {}
-            self.TAKE_PROFIT_STRATEGIES = {}
-            self.CUT_LOSS_STRATEGIES = {}
-            
-            print(f"[MODULAR] Dual hybrid mode detected - strategies not yet implemented")
-            print(f"[MODULAR] Falling back to pairs trading strategies for now")
-            
-            # Fallback to pairs strategies temporarily
-            self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
-            self.TAKE_PROFIT_STRATEGIES = {"let_profit_run_profit": LetProfitRun}
-            self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
-            
-        else:
-            # Unknown mode - use pairs trading as safe default
-            print(f"[MODULAR] Unknown trading mode: {self.mode_name}, defaulting to pairs_trading")
-            self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
-            self.TAKE_PROFIT_STRATEGIES = {"hit_and_run_profit": HitAndRunProfit}
-            self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
+            # PHASE 3B: Dual hybrid strategies (placeholder)
+            if DUAL_HYBRID_STRATEGIES_AVAILABLE:
+                self.ENTRY_STRATEGIES = {
+                    "dual_hybrid_entry": DualHybridEntry,
+                }
+                self.TAKE_PROFIT_STRATEGIES = {
+                    "let_profit_run_profit": LetProfitRun,  # Reuse pairs strategy
+                }
+                self.CUT_LOSS_STRATEGIES = {
+                    "alternating_scaling_exit": AlternatingScalingExit,
+                }
+                print(f"[MODULAR] Dual hybrid strategies loaded (PLACEHOLDER)")
+            else:
+                print(f"[MODULAR] Dual hybrid strategies not available - fallback to pairs")
+                self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
+                self.TAKE_PROFIT_STRATEGIES = {"let_profit_run_profit": LetProfitRun}
+                self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
     
     def _get_active_strategy_name(self, category: str) -> str:
         """Get the name of the currently active strategy for a category"""
