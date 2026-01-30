@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-01-29T00:40:49.695248",
+  "timeframe": "5m",
+  "lookback_bars": 1000,
+  "pairs_tested": 5,
+  "results": [
+    {
+      "asset1": "SOL",
+      "asset2": "MELANIA",
+      "pair": "SOL/MELANIA",
+      "is_cointegrated": false,
+      "p_value": 0.12823569476659646,
+      "adf_statistic": -2.4495536497060604,
+      "half_life_bars": 57.947955417373876,
+      "half_life_minutes": 289.73977708686937,
+      "hedge_ratio": 0.0010885650611507929,
+      "recommendation": "NOT_SUITABLE",
+      "samples_used": 1000
+    },
+    {
+      "asset1": "SOL",
+      "asset2": "BTC",
+      "pair": "SOL/BTC",
+      "is_cointegrated": false,
+      "p_value": 0.06284766308757903,
+      "adf_statistic": -2.76895053379246,
+      "half_life_bars": 37.28189325193946,
+      "half_life_minutes": 186.4094662596973,
+      "hedge_ratio": 309.49113832449547,
+      "recommendation": "NOT_SUITABLE",
+      "samples_used": 1000
+    },
+    {
+      "asset1": "ETH",
+      "asset2": "BTC",
+      "pair": "ETH/BTC",
+      "is_cointegrated": true,
+      "p_value": 6.508208793046713e-05,
+      "adf_statistic": -4.759089489359542,
+      "half_life_bars": 7.558566891708585,
+      "half_life_minutes": 37.79283445854293,
+      "hedge_ratio": 13.092632134966111,
+      "recommendation": "GOOD",
+      "samples_used": 1000
+    },
+    {
+      "asset1": "JUP",
+      "asset2": "BTC",
+      "pair": "JUP/BTC",
+      "is_cointegrated": true,
+      "p_value": 0.004733313231306661,
+      "adf_statistic": -3.658682772560818,
+      "half_life_bars": 27.06392992519927,
+      "half_life_minutes": 135.31964962599636,
+      "hedge_ratio": 79530.47785993699,
+      "recommendation": "MODERATE",
+      "samples_used": 1000
+    },
+    {
+      "asset1": "ZK",
+      "asset2": "BTC",
+      "pair": "ZK/BTC",
+      "is_cointegrated": false,
+      "p_value": 0.6334263183718801,
+      "adf_statistic": -1.2906779056222533,
+      "half_life_bars": 112.90888861563042,
+      "half_life_minutes": 564.5444430781521,
+      "hedge_ratio": 311210.85904860013,
+      "recommendation": "NOT_SUITABLE",
+      "samples_used": 1000
+    }
+  ]
+}

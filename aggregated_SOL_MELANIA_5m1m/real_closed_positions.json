@@ -502,5 +502,593 @@
     "close_price": 129.335,
     "closed_at": "2026-01-23T18:38:59.333157+00:00",
     "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769194340-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 128.935,
+    "entry_zscore": -1.6,
+    "beta_at_entry": 553.523927255984,
+    "size": 1.0,
+    "timestamp": "2026-01-23T18:52:20.466543+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": -68.21778357289683,
+    "direction": "LONG",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 7.755845968899058,
+        "entry_price": 128.935,
+        "value_usd": 1000.0,
+        "pnl": -40.718191336720054,
+        "current_price": 123.685
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6524.221171097701,
+        "entry_price": 0.153275,
+        "value_usd": 1000.0,
+        "pnl": -27.499592236176785,
+        "current_price": 0.15749
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 5,
+      "direction": "LONG",
+      "total_pnl": 11.70547540401149
+    },
+    "current_price": 123.685,
+    "close_price": 0.0,
+    "closed_at": "2026-01-29T08:28:28.632636+00:00",
+    "exit_reason": "MANUAL_CLOSE_ALL_REAL"
+  },
+  {
+    "id": "POS-1769573795-1",
+    "asset": "SOL/MELANIA",
+    "entry_price": 126.555,
+    "entry_zscore": -2.1800746465177188,
+    "beta_at_entry": 217.96812057858676,
+    "size": 1.0,
+    "timestamp": "2026-01-28T04:16:35.442637+00:00",
+    "timestamps": {
+      "most_recent_add": "2026-01-28T04:16:35+00:00"
+    },
+    "pnl": 17.953204533267,
+    "direction": "LONG",
+    "type": "SCALING",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 7.901702816957054,
+        "entry_price": 126.555,
+        "value_usd": 1000.0,
+        "pnl": -22.677887084666782,
+        "current_price": 123.685
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6091.617933723197,
+        "entry_price": 0.16416,
+        "value_usd": 1000.0,
+        "pnl": 40.631091617933784,
+        "current_price": 0.15749
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 5,
+      "direction": "LONG",
+      "total_pnl": 11.70547540401149
+    },
+    "current_price": 123.685,
+    "close_price": 0.0,
+    "closed_at": "2026-01-29T08:28:28.632636+00:00",
+    "exit_reason": "MANUAL_CLOSE_ALL_REAL"
+  },
+  {
+    "id": "POS-1769573800-2",
+    "asset": "SOL/MELANIA",
+    "entry_price": 126.555,
+    "entry_zscore": -2.108226581927658,
+    "beta_at_entry": 217.96812057858676,
+    "size": 1.0,
+    "timestamp": "2026-01-28T04:16:40.516942+00:00",
+    "timestamps": {
+      "most_recent_add": "2026-01-28T04:16:40+00:00"
+    },
+    "pnl": 17.748617104213817,
+    "direction": "LONG",
+    "type": "SCALING",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 7.901702816957054,
+        "entry_price": 126.555,
+        "value_usd": 1000.0,
+        "pnl": -22.677887084666782,
+        "current_price": 123.685
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6092.916984006092,
+        "entry_price": 0.16412500000000002,
+        "value_usd": 1000.0,
+        "pnl": 40.4265041888806,
+        "current_price": 0.15749
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 5,
+      "direction": "LONG",
+      "total_pnl": 11.70547540401149
+    },
+    "current_price": 123.685,
+    "close_price": 0.0,
+    "closed_at": "2026-01-29T08:28:28.632636+00:00",
+    "exit_reason": "MANUAL_CLOSE_ALL_REAL"
+  },
+  {
+    "id": "POS-1769573838-3",
+    "asset": "SOL/MELANIA",
+    "entry_price": 126.465,
+    "entry_zscore": -2.58151373305689,
+    "beta_at_entry": 223.10057710141342,
+    "size": 1.0,
+    "timestamp": "2026-01-28T04:17:18.201207+00:00",
+    "timestamps": {
+      "most_recent_add": "2026-01-28T04:17:18+00:00"
+    },
+    "pnl": 17.888388686918262,
+    "direction": "LONG",
+    "type": "SCALING",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 7.907326137666548,
+        "entry_price": 126.465,
+        "value_usd": 1000.0,
+        "pnl": -21.982366662713012,
+        "current_price": 123.685
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6096.4457721148565,
+        "entry_price": 0.16403,
+        "value_usd": 1000.0,
+        "pnl": 39.870755349631274,
+        "current_price": 0.15749
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 5,
+      "direction": "LONG",
+      "total_pnl": 11.70547540401149
+    },
+    "current_price": 123.685,
+    "close_price": 0.0,
+    "closed_at": "2026-01-29T08:28:28.632636+00:00",
+    "exit_reason": "MANUAL_CLOSE_ALL_REAL"
+  },
+  {
+    "id": "POS-1769582488-4",
+    "asset": "SOL/MELANIA",
+    "entry_price": 126.85499999999999,
+    "entry_zscore": -3.0536639128134744,
+    "beta_at_entry": 78.23424492953625,
+    "size": 1.0,
+    "timestamp": "2026-01-28T06:41:28.182985+00:00",
+    "timestamps": {
+      "most_recent_add": "2026-01-28T06:41:28.182987+00:00"
+    },
+    "pnl": 26.333048652509245,
+    "direction": "LONG",
+    "type": "SCALING",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 7.883016041937646,
+        "entry_price": 126.85499999999999,
+        "value_usd": 1000.0,
+        "pnl": -24.989160852942238,
+        "current_price": 123.685
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6023.733510029517,
+        "entry_price": 0.16601,
+        "value_usd": 1000.0,
+        "pnl": 51.32220950545148,
+        "current_price": 0.15749
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 5,
+      "direction": "LONG",
+      "total_pnl": 11.70547540401149
+    },
+    "current_price": 123.685,
+    "close_price": 0.0,
+    "closed_at": "2026-01-29T08:28:28.632636+00:00",
+    "exit_reason": "MANUAL_CLOSE_ALL_REAL"
+  },
+  {
+    "id": "POS-1769676607-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 123.205,
+    "entry_zscore": -1.6156431651671455,
+    "beta_at_entry": 19.528161836029426,
+    "size": 1.0,
+    "timestamp": "2026-01-29T08:50:07.175551+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 4.169037956153206,
+    "direction": "LONG",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 8.116553711294184,
+        "entry_price": 123.205,
+        "value_usd": 1000.0,
+        "pnl": 0.24349661133883474,
+        "current_price": 123.235,
+        "exit_price": 123.235
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6331.518298087882,
+        "entry_price": 0.15794,
+        "value_usd": 1000.0,
+        "pnl": 3.925541344814371,
+        "current_price": 0.15732000000000002,
+        "exit_price": 0.15732000000000002
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "LONG",
+      "total_pnl": 4.169037956153206
+    },
+    "current_price": 123.235,
+    "close_price": 123.235,
+    "closed_at": "2026-01-29T09:00:15.541279+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769678016-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 123.045,
+    "entry_zscore": -1.6024090893017837,
+    "beta_at_entry": 32.63650943451449,
+    "size": 1.0,
+    "timestamp": "2026-01-29T09:13:36.517242+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 5.038269262032413,
+    "direction": "LONG",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 8.127107968629364,
+        "entry_price": 123.045,
+        "value_usd": 1000.0,
+        "pnl": -1.6254215937258958,
+        "current_price": 122.845,
+        "exit_price": 122.845
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6376.737661012626,
+        "entry_price": 0.15682000000000001,
+        "value_usd": 1000.0,
+        "pnl": 6.663690855758309,
+        "current_price": 0.155775,
+        "exit_price": 0.155775
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "LONG",
+      "total_pnl": 5.038269262032413
+    },
+    "current_price": 122.845,
+    "close_price": 122.845,
+    "closed_at": "2026-01-29T11:17:40.343971+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769685626-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 122.83500000000001,
+    "entry_zscore": -1.8056033813932344,
+    "beta_at_entry": -82.78886380759609,
+    "size": 1.0,
+    "timestamp": "2026-01-29T11:20:26.796444+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 5.048191390249554,
+    "direction": "LONG",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 8.141002157365572,
+        "entry_price": 122.83500000000001,
+        "value_usd": 1000.0,
+        "pnl": -0.40705010786837115,
+        "current_price": 122.785,
+        "exit_price": 122.785
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6380.399413003253,
+        "entry_price": 0.15673,
+        "value_usd": 1000.0,
+        "pnl": 5.455241498117925,
+        "current_price": 0.15587499999999999,
+        "exit_price": 0.15587499999999999
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "LONG",
+      "total_pnl": 5.048191390249554
+    },
+    "current_price": 122.785,
+    "close_price": 122.785,
+    "closed_at": "2026-01-29T11:41:05.708547+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769687557-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 122.755,
+    "entry_zscore": 1.6357847505696128,
+    "beta_at_entry": 67.78136036437971,
+    "size": 1.0,
+    "timestamp": "2026-01-29T11:52:37.958005+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 5.5124283623205415,
+    "direction": "SHORT",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "SHORT",
+        "qty": 8.146307686041302,
+        "entry_price": 122.755,
+        "value_usd": 1000.0,
+        "pnl": -0.733167691743745,
+        "current_price": 122.845,
+        "exit_price": 122.845
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "LONG",
+        "qty": 6405.7395426301955,
+        "entry_price": 0.15611000000000003,
+        "value_usd": 1000.0,
+        "pnl": 6.245596054064286,
+        "current_price": 0.157085,
+        "exit_price": 0.157085
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "SHORT",
+      "total_pnl": 5.5124283623205415
+    },
+    "current_price": 122.845,
+    "close_price": 122.845,
+    "closed_at": "2026-01-29T12:18:50.600986+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769689915-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 122.955,
+    "entry_zscore": 1.6862720798847803,
+    "beta_at_entry": 126.78905763539726,
+    "size": 1.0,
+    "timestamp": "2026-01-29T12:31:55.321035+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 5.325480162724787,
+    "direction": "SHORT",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "SHORT",
+        "qty": 8.133056809401813,
+        "entry_price": 122.955,
+        "value_usd": 1000.0,
+        "pnl": 46.60241551787242,
+        "current_price": 117.225,
+        "exit_price": 117.225
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "LONG",
+        "qty": 6384.676775738228,
+        "entry_price": 0.15662500000000001,
+        "value_usd": 1000.0,
+        "pnl": -41.276935355147636,
+        "current_price": 0.15016000000000002,
+        "exit_price": 0.15016000000000002
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 2,
+      "direction": "SHORT",
+      "total_pnl": 31.28100764049497
+    },
+    "current_price": 117.225,
+    "close_price": 117.225,
+    "closed_at": "2026-01-29T15:40:28.144080+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769692939-1",
+    "asset": "SOL/MELANIA",
+    "entry_price": 122.905,
+    "entry_zscore": 2.379623436414566,
+    "beta_at_entry": 138.26721404345906,
+    "size": 1.0,
+    "timestamp": "2026-01-29T13:22:19.198385+00:00",
+    "timestamps": {
+      "most_recent_add": "2026-01-29T13:22:19.198387+00:00"
+    },
+    "pnl": 25.955527477770183,
+    "direction": "SHORT",
+    "type": "SCALING",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "SHORT",
+        "qty": 8.13636548553761,
+        "entry_price": 122.905,
+        "value_usd": 1000.0,
+        "pnl": 46.214555957853676,
+        "current_price": 117.225,
+        "exit_price": 117.225
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "LONG",
+        "qty": 6524.646853489055,
+        "entry_price": 0.153265,
+        "value_usd": 1000.0,
+        "pnl": -20.259028480083494,
+        "current_price": 0.15016000000000002,
+        "exit_price": 0.15016000000000002
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 2,
+      "direction": "SHORT",
+      "total_pnl": 31.28100764049497
+    },
+    "current_price": 117.225,
+    "close_price": 117.225,
+    "closed_at": "2026-01-29T15:40:28.144115+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769701229-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 117.235,
+    "entry_zscore": -2.3908582437813837,
+    "beta_at_entry": 530.0953704091631,
+    "size": 1.0,
+    "timestamp": "2026-01-29T15:40:29.872450+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 5.285814297666789,
+    "direction": "LONG",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "LONG",
+        "qty": 8.529875890305796,
+        "entry_price": 117.235,
+        "value_usd": 1000.0,
+        "pnl": 5.885614364311101,
+        "current_price": 117.92500000000001,
+        "exit_price": 117.92500000000001
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "SHORT",
+        "qty": 6664.445184938353,
+        "entry_price": 0.15005000000000002,
+        "value_usd": 1000.0,
+        "pnl": -0.5998000666443117,
+        "current_price": 0.15014,
+        "exit_price": 0.15014
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "LONG",
+      "total_pnl": 5.285814297666789
+    },
+    "current_price": 117.92500000000001,
+    "close_price": 117.92500000000001,
+    "closed_at": "2026-01-29T16:14:47.904912+00:00",
+    "exit_reason": "EXIT"
+  },
+  {
+    "id": "POS-1769703312-0",
+    "asset": "SOL/MELANIA",
+    "entry_price": 118.055,
+    "entry_zscore": 2.307381907490767,
+    "beta_at_entry": 837.6591845883137,
+    "size": 1.0,
+    "timestamp": "2026-01-29T16:15:12.244422+00:00",
+    "timestamps": {
+      "most_recent_add": null
+    },
+    "pnl": 1.0134408854104127,
+    "direction": "SHORT",
+    "type": "INITIAL",
+    "legs": [
+      {
+        "asset": "SOL",
+        "direction": "SHORT",
+        "qty": 8.470628097073398,
+        "entry_price": 118.055,
+        "value_usd": 1000.0,
+        "pnl": 1.778831900385481,
+        "current_price": 117.845,
+        "exit_price": 117.845
+      },
+      {
+        "asset": "MELANIA",
+        "direction": "LONG",
+        "qty": 6655.574043261232,
+        "entry_price": 0.15025,
+        "value_usd": 1000.0,
+        "pnl": -0.7653910149750682,
+        "current_price": 0.150135,
+        "exit_price": 0.150135
+      }
+    ],
+    "aggregated_metrics": {
+      "actual_component_count": 1,
+      "direction": "SHORT",
+      "total_pnl": 1.0134408854104127
+    },
+    "current_price": 117.845,
+    "close_price": 117.845,
+    "closed_at": "2026-01-29T16:39:02.288724+00:00",
+    "exit_reason": "EXIT"
   }
 ]

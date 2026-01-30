@@ -22,32 +22,32 @@
           "label": "Very strong SHORT extreme (5s)"
         },
         {
-          "zscore": -6.962017544279419,
-          "timestamp": "2026-01-27T20:05:48+00:00",
+          "zscore": -17.15207442858123,
+          "timestamp": "2026-01-29T04:48:34+00:00",
           "timeframe": "5s",
           "synthetic": false
         },
         {
-          "zscore": -6.873814609614007,
-          "timestamp": "2026-01-27T20:05:46+00:00",
+          "zscore": -16.684914161824622,
+          "timestamp": "2026-01-29T04:48:32+00:00",
           "timeframe": "5s",
           "synthetic": false
         },
         {
-          "zscore": -6.697408740282973,
-          "timestamp": "2026-01-27T20:05:45+00:00",
+          "zscore": -15.376865414906383,
+          "timestamp": "2026-01-29T04:48:30+00:00",
           "timeframe": "5s",
           "synthetic": false
         },
         {
-          "zscore": -5.568527586186052,
-          "timestamp": "2026-01-27T20:05:50+00:00",
+          "zscore": -9.13292664899556,
+          "timestamp": "2026-01-29T04:48:36+00:00",
           "timeframe": "5s",
           "synthetic": false
         }
       ],
       "metadata": {
-        "last_updated": "2026-01-28T07:45:50.597141+00:00",
+        "last_updated": "2026-01-29T16:51:43.549202+00:00",
         "timeframe": "5s",
         "total_extremes": 7,
         "has_synthetic": true,
@@ -57,50 +57,50 @@
     "1m": {
       "extremes": [
         {
-          "zscore": 1.0005455378336932,
-          "timestamp": "2026-01-28T01:10:35+00:00",
+          "zscore": 1.0001388896817904,
+          "timestamp": "2026-01-29T00:59:50+00:00",
           "timeframe": "1m",
           "synthetic": false
         },
         {
-          "zscore": 1.0005455378336932,
-          "timestamp": "2026-01-28T01:10:37+00:00",
+          "zscore": 1.0000693927817275,
+          "timestamp": "2026-01-28T12:04:36+00:00",
           "timeframe": "1m",
           "synthetic": false
         },
         {
-          "zscore": 1.0005455378336932,
-          "timestamp": "2026-01-28T01:10:51+00:00",
+          "zscore": 1.000066651608721,
+          "timestamp": "2026-01-29T16:28:25+00:00",
           "timeframe": "1m",
           "synthetic": false
         },
         {
-          "zscore": -3.8079627721797507,
-          "timestamp": "2026-01-28T07:45:48+00:00",
+          "zscore": -7.344419214820891,
+          "timestamp": "2026-01-29T14:31:49+00:00",
           "timeframe": "1m",
           "synthetic": false
         },
         {
-          "zscore": -3.8079627721797507,
-          "timestamp": "2026-01-28T07:45:49+00:00",
+          "zscore": -6.978922884327767,
+          "timestamp": "2026-01-29T14:31:51+00:00",
           "timeframe": "1m",
           "synthetic": false
         },
         {
-          "zscore": -3.7693721804877423,
-          "timestamp": "2026-01-28T07:45:38+00:00",
+          "zscore": -6.687607262814948,
+          "timestamp": "2026-01-29T14:31:44+00:00",
           "timeframe": "1m",
           "synthetic": false
         },
         {
-          "zscore": -3.7693721804877423,
-          "timestamp": "2026-01-28T07:45:39+00:00",
+          "zscore": -6.540292402481854,
+          "timestamp": "2026-01-29T14:31:58+00:00",
           "timeframe": "1m",
           "synthetic": false
         }
       ],
       "metadata": {
-        "last_updated": "2026-01-28T07:45:50.597141+00:00",
+        "last_updated": "2026-01-29T16:51:43.549202+00:00",
         "timeframe": "1m",
         "total_extremes": 7,
         "has_synthetic": false,
@@ -110,65 +110,59 @@
     "1h": {
       "extremes": [
         {
-          "zscore": 2.4071505907925967,
-          "timestamp": "2026-01-27T20:21:14+00:00",
+          "zscore": 1.0003753408864957,
+          "timestamp": "2026-01-29T07:25:36+00:00",
           "timeframe": "1h",
           "synthetic": false
         },
         {
-          "zscore": 1.5282795131586817,
-          "timestamp": "2026-01-28T07:28:08+00:00",
+          "zscore": 1.0002327327037825,
+          "timestamp": "2026-01-29T07:32:02+00:00",
           "timeframe": "1h",
           "synthetic": false
         },
         {
-          "zscore": 1.5282795131586817,
-          "timestamp": "2026-01-28T07:28:10+00:00",
+          "zscore": 1.000072947316928,
+          "timestamp": "2026-01-28T20:58:49+00:00",
           "timeframe": "1h",
           "synthetic": false
         },
         {
-          "zscore": 1.5282795131586817,
-          "timestamp": "2026-01-28T07:28:11+00:00",
+          "zscore": -6.346657725079465,
+          "timestamp": "2026-01-29T15:09:40+00:00",
           "timeframe": "1h",
           "synthetic": false
         },
         {
-          "zscore": -2.4174090361123723,
-          "timestamp": "2026-01-28T00:16:59+00:00",
+          "zscore": -6.225504426753182,
+          "timestamp": "2026-01-29T15:09:59+00:00",
           "timeframe": "1h",
           "synthetic": false
         },
         {
-          "zscore": -2.4174090361123723,
-          "timestamp": "2026-01-28T00:17:01+00:00",
+          "zscore": -6.206040486892858,
+          "timestamp": "2026-01-29T15:12:23+00:00",
           "timeframe": "1h",
           "synthetic": false
         },
         {
-          "zscore": -2.4174090361123723,
-          "timestamp": "2026-01-28T00:17:03+00:00",
-          "timeframe": "1h",
-          "synthetic": false
-        },
-        {
-          "zscore": -2.3855957939154933,
-          "timestamp": "2026-01-28T00:16:47+00:00",
+          "zscore": -6.202255607553005,
+          "timestamp": "2026-01-29T15:12:29+00:00",
           "timeframe": "1h",
           "synthetic": false
         }
       ],
       "metadata": {
-        "last_updated": "2026-01-28T07:45:50.597141+00:00",
+        "last_updated": "2026-01-29T16:51:43.549202+00:00",
         "timeframe": "1h",
-        "total_extremes": 8,
+        "total_extremes": 7,
         "has_synthetic": false,
         "is_primary_timeframe": false
       }
     }
   },
   "global_metadata": {
-    "last_updated": "2026-01-28T07:45:50.597141+00:00",
+    "last_updated": "2026-01-29T16:51:43.549202+00:00",
     "primary_timeframe": "1m",
     "supported_timeframes": [
       "5s",

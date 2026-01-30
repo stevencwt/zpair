@@ -1,0 +1,475 @@
+{
+  "market_state_storage": {
+    "mode": "FILE",
+    "file_settings": {
+      "snapshot_dir": "marketstate"
+    }
+  },
+  "provider": "hyperliquid",
+  "trading": {
+    "hyperliquid": {
+      "private_key": "0xe4780c585194bad0d600633eb3e4ed22916d3223b80ef443341b5aea426d18e1",
+      "wallet_address": "0xE9Ca51cb0eE8f86A1AD9a4E43bcfbc1B8243047C"
+    },
+    "telemetry": {
+      "enabled": true,
+      "primary_asset": "ETH",
+      "reference_asset": "BTC",
+      "zscore_window": 40,
+      "bootstrap_bars": 50,
+      "rsi_period": 14,
+      "historical_lookback": 250
+    },
+    "leverage": 3,
+    "mode": "REAL"
+  },
+  "multi_timeframe_buffers": {
+    "enabled": true,
+    "initialization": {
+      "retry_attempts": 3,
+      "retry_delay_seconds": 5,
+      "fallback_to_legacy_mode": true
+    },
+    "timeframes": {
+      "5s": {
+        "buffer_size": 720,
+        "regression_window": 360,
+        "zscore_window": 120,
+        "correlation_window": 200,
+        "beta_smoothing_window": 60,
+        "min_periods_for_analysis": 50,
+        "update_frequency_seconds": 5,
+        "hurst_window": 120,
+        "hurst_max_lag": 20
+      },
+      "1m": {
+        "buffer_size": 350,
+        "regression_window": 200,
+        "zscore_window": 40,
+        "correlation_window": 80,
+        "beta_smoothing_window": 30,
+        "min_periods_for_analysis": 50,
+        "update_frequency_seconds": 60,
+        "hurst_window": 100,
+        "hurst_max_lag": 20
+      },
+      "1h": {
+        "buffer_size": 200,
+        "regression_window": 120,
+        "zscore_window": 36,
+        "correlation_window": 60,
+        "beta_smoothing_window": 24,
+        "min_periods_for_analysis": 30,
+        "update_frequency_seconds": 3600
+      },
+      "5m": {
+        "buffer_size": 500,
+        "regression_window": 200,
+        "zscore_window": 60,
+        "correlation_window": 100,
+        "beta_smoothing_window": 30,
+        "min_periods_for_analysis": 50,
+        "update_frequency_seconds": 60,
+        "hurst_window": 100,
+        "hurst_max_lag": 20
+      }
+    },
+    "primary_timeframe": "1m",
+    "bias_timeframe": "5m",
+    "tactical_timeframe": "5s",
+    "coordination": {
+      "hourly_bias_filtering": true,
+      "conflicting_signal_resolution": "primary_timeframe_priority",
+      "minimum_bias_agreement_threshold": 0.3
+    },
+    "api_optimization": {
+      "current_price_fetch_interval_seconds": 5,
+      "historical_refresh_interval_hours": 6,
+      "batch_candle_requests": true
+    },
+    "include_developing_candle": true
+  },
+  "pair_trading": {
+    "method": "regression",
+    "regression_window": 200,
+    "zscore_window": 40,
+    "correlation_window": 80,
+    "beta_smoothing_window": 30,
+    "health_thresholds": {
+      "min_correlation": 0.2,
+      "max_beta_drift_pct": 20.0,
+      "min_r_squared": 0.2
+    },
+    "bands": {
+      "z_entry": 1.5,
+      "z_stop": 2.5,
+      "z_exit": 0.3
+    }
+  },
+  "regime_assessment": {
+    "enabled": true,
+    "timeframe": "1m",
+    "lookback_periods": 60,
+    "trend_threshold": 0.3,
+    "volatility_sync_threshold": 0.5,
+    "correlation_threshold": 0.1,
+    "_comment": "DEPRECATED - These values are not used. See entry_strategies.htf_bias_ltf_timing.market_regime_requirements"
+  },
+  "trading_decision": {
+    "enabled": true,
+    "rules_only": true,
+    "use_granular_config": false,
+    "use_modular_strategies": true,
+    "fallback_to_legacy": false,
+    "require_modular_only": true,
+    "require_decision_logic_config": false
+  },
+  "trade_simulation": {
+    "enabled": true,
+    "real_trading_enabled": true,
+    "phase1_enhancements": {
+      "complete_execution_tracking": true,
+      "beta_analysis": true,
+      "hedge_ratio_tracking": true,
+      "execution_quality_metrics": true
+    },
+    "architecture": "pure_executor",
+    "trust_pre_validated_signals": true,
+    "business_logic_validation": "disabled_moved_to_strategies",
+    "storage": {
+      "positions_directory": "aggregated_ETH_BTC_5m1m",
+      "real_positions_file": "real_open_positions.json",
+      "sim_positions_file": "sim_open_positions.json",
+      "real_closed_positions_file": "real_closed_positions.json",
+      "sim_closed_positions_file": "sim_closed_positions.json",
+      "schema_version": "2.0.0",
+      "unified_aggregated_format": true
+    }
+  },
+  "market_barometer": {
+    "enabled": true,
+    "source": "marketstate_ETH_BTC_production/latest_barometer.json"
+  },
+  "realtime_charts": {
+    "enabled": false,
+    "output_dir": "realtime_SOL_MELANIA_5m1m",
+    "filename": "ETH_BTC_live_1m.png",
+    "buffer_size": 200,
+    "generation_interval_seconds": 30,
+    "zscore_window": 40,
+    "zscore_thresholds": [
+      1,
+      2,
+      3
+    ],
+    "theme": "dark",
+    "force_generation_on_signal_change": true
+  },
+  "snapshot_dir": "marketstate_ETH_BTC_5m1m",
+  "asset": "ETH/BTC",
+  "refresh_ms": 500,
+  "portfolio": {
+    "active_assets": [
+      "ETH/BTC"
+    ],
+    "trading_mode": "pairs_trading",
+    "netting_protection_enabled": true,
+    "comment": "Available modes: 'pairs_trading' (standard spread logic), 'single_asset' (directional RSI/Hurst), 'dual_single' (two independent assets), 'mixed_portfolio' (adaptive logic for pairs + singles), 'dynamic_duo' (future: lead-lag correlation), 'multi_agent' (future: 3+ assets)"
+  },
+  "regime_filters": {
+    "hurst_trending_veto": 0.55,
+    "hurst_reversion_confirm": 0.42,
+    "correlation_breakdown": 0.15,
+    "single_asset_mode_enabled": true
+  },
+  "execution_constraints": {
+    "enabled": true,
+    "max_spread_bps": 35.0,
+    "max_spread_zscore": 2.2,
+    "min_liquidity_usd": 600.0,
+    "retry_delay_seconds": 5
+  },
+  "asset_pair_info": {
+    "base_asset": "ETH",
+    "quote_asset": "BTC"
+  },
+  "governor_settings": {
+    "manual_pause_active": true,
+    "trading_schedule": {
+      "timezone": "Asia/Singapore",
+      "active_windows": []
+    }
+  },
+  "active_strategies": {
+    "entry": "htf_bias_ltf_timing",
+    "take_profit": "hit_and_run_profit",
+    "cut_loss": "simple_scaling_strategy"
+  },
+  "entry_strategies": {
+    "htf_bias_ltf_timing": {
+      "position_management": {
+        "max_concurrent_positions": 1
+      },
+      "signal_timing": {
+        "min_seconds_between_signals": 5.0
+      },
+      "direction_control": {
+        "allowed_directions": "both",
+        "comment": "Options: 'both', 'long_only', 'short_only'"
+      },
+      "htf_bias_config": {
+        "strong_positive_threshold": 1.2,
+        "strong_negative_threshold": -1.2,
+        "neutral_band": [
+          -0.5,
+          0.5
+        ],
+        "favor_shorts_when_htf_positive": true,
+        "favor_longs_when_htf_negative": true,
+        "both_directions_when_neutral": true
+      },
+      "ltf_timing_config": {
+        "entry_thresholds": {
+          "long": -1.6,
+          "short": 1.6
+        }
+      },
+      "trade_blocking": {
+        "htf_rsquare_gate": {
+          "enabled": false,
+          "min_threshold": 0.2
+        }
+      },
+      "market_regime_requirements": {
+        "min_correlation": 0.16,
+        "min_correlation_when_trending": 0.3,
+        "min_volatility_sync": 0.17,
+        "allow_divergent_trends": false
+      },
+      "orderbook_snipping": {
+        "enabled": true,
+        "max_spread_bps": 15.0,
+        "min_liquidity_usd": 600.0,
+        "imbalance_logic": {
+          "mode": "dynamic_zscore",
+          "static_threshold": 1.5,
+          "zscore_threshold": 2.0,
+          "lookback_period": 60,
+          "min_absolute_ratio": 1.2,
+          "store_history": true
+        },
+        "snipe_timeout_seconds": 10,
+        "require_both_legs": true
+      }
+    }
+  },
+  "take_profit_strategies": {
+    "hit_and_run_profit": {
+      "dollar_target": 1.0,
+      "percent_target": 0.8,
+      "max_wait_hours": 8.0,
+      "breakeven_threshold_use": 2.0
+    },
+    "let_profit_run_profit": {
+      "min_dollar_target": 4.5,
+      "min_percent_target": 1.0,
+      "max_wait_hours": 8.0,
+      "satisfactory_profit_threshold_usd": 5.0
+    },
+    "trailing_stop_profit": {
+      "activation_dollar_target": 3.0,
+      "activation_percent_target": 0.95,
+      "trailing_distance_usd": 1.0,
+      "trailing_distance_percent": 20.0,
+      "use_percentage_trail": false,
+      "min_trail_adjustment": 0.25,
+      "negative_trail_protection": true,
+      "max_wait_hours": 12.0,
+      "emergency_profit_threshold": 1.0
+    }
+  },
+  "cut_loss_strategies": {
+    "extreme_scaling_strategy": {
+      "strategy_type": "position_scaling_exit",
+      "works_with_aggregated_positions": true,
+      "position_scaling_config": {
+        "enabled": true,
+        "max_add_positions": 4,
+        "extreme_tracking": {
+          "window_size": 1000,
+          "min_long_threshold": -1.0,
+          "min_short_threshold": 1.0,
+          "history_depth": 3,
+          "max_age_hours": 36,
+          "min_extremes_required": 2,
+          "retention_hours": 168
+        },
+        "add_conditions": {
+          "floating_loss_threshold_usd": 20.0,
+          "stabilization_period_minutes": 15
+        },
+        "quick_profit_exit": {
+          "enabled": true,
+          "profit_target_usd": 2.0,
+          "comment": "Exit immediately when $2 profit is reached"
+        },
+        "storage": {
+          "extreme_tracking_directory": "extreme_tracking_{asset}"
+        }
+      },
+      "embedded_risk_management": {
+        "emergency_exits": {
+          "max_data_age_minutes": 10,
+          "min_correlation": 0.0,
+          "min_htf_rsquare": 0.0
+        },
+        "time_limits": {
+          "max_hold_hours": 8.5
+        }
+      }
+    },
+    "simple_scaling_strategy": {
+      "strategy_type": "position_scaling_exit",
+      "works_with_aggregated_positions": true,
+      "position_scaling_config": {
+        "enabled": true,
+        "max_add_positions": 5,
+        "add_conditions": {
+          "floating_loss_threshold_usd": 20.0,
+          "stabilization_period_minutes": 10.0
+        },
+        "simple_zscore_thresholds": {
+          "use_progressive_thresholds": true,
+          "scaling_mode": "fixed_increment",
+          "threshold_increment": 0.5,
+          "percentage_threshold": 20
+        },
+        "quick_profit_exit": {
+          "enabled": true,
+          "profit_target_usd": 2.0,
+          "comment": "Exit immediately when $2 profit is reached"
+        }
+      },
+      "embedded_risk_management": {
+        "emergency_exits": {
+          "max_data_age_minutes": 10,
+          "min_correlation": 0.0,
+          "min_htf_rsquare": 0.0
+        },
+        "time_limits": {
+          "max_hold_hours": 240
+        }
+      }
+    },
+    "multi_criteria_stop": {
+      "works_with_aggregated_positions": true,
+      "stop_loss_exit": {
+        "max_loss_dollar": 600.0,
+        "max_loss_percent": 10,
+        "zscore_stops": {
+          "long_stop_zscore": -4.0,
+          "short_stop_zscore": 4.0
+        }
+      },
+      "embedded_risk_management": {
+        "emergency_exits": {
+          "max_data_age_minutes": 10,
+          "min_correlation": 0.0,
+          "min_htf_rsquare": 0.0
+        },
+        "time_limits": {
+          "max_hold_hours": 240
+        }
+      }
+    }
+  },
+  "position_sizing": {
+    "method": "htf_beta",
+    "sizing_params": {
+      "htf_beta": {
+        "base_position_usd": 1000.0
+      }
+    }
+  },
+  "trading_framework": {
+    "schema_version": "1.0-granular",
+    "strategy_name": "migrated_from_legacy",
+    "signal_sources": {
+      "htf_zscore": "regression_htf.zscore",
+      "ltf_zscore": "regression.zscore",
+      "htf_rsquare": "regression_htf.r_squared",
+      "ltf_rsquare": "regression.r_squared",
+      "htf_beta": "regression_htf.beta",
+      "ltf_beta": "regression.beta",
+      "regime_safe": "regime_assessment.safe_for_mean_reversion"
+    },
+    "decision_logic": {
+      "trade_blocking": {
+        "htf_rsquare_gate": {
+          "enabled": true,
+          "signal": "htf_rsquare",
+          "min_threshold": 0.3,
+          "blocks_new_trades_only": true
+        }
+      },
+      "entry_logic": {
+        "primary_trigger": {
+          "signal": "ltf_zscore",
+          "enabled": true
+        },
+        "direction_control": {
+          "bias_signal": "htf_zscore",
+          "enabled": true,
+          "rules": {
+            "strong_positive_threshold": 1.0,
+            "strong_negative_threshold": -1.0,
+            "neutral_band": [
+              -0.5,
+              0.5
+            ],
+            "use_absolute_values": true
+          }
+        },
+        "additional_filters": {
+          "regime_safety": {
+            "enabled": true,
+            "signal": "regime_safe"
+          }
+        },
+        "entry_thresholds": {
+          "ltf_zscore_long": -1.5,
+          "ltf_zscore_short": 1.5,
+          "min_confidence": 0.5
+        }
+      },
+      "exit_logic": {
+        "exit_triggers": {
+          "profit_based_exit": {
+            "enabled": true,
+            "strategies": {
+              "let_profit_run": {
+                "enabled": true,
+                "dollar_target": 5.0,
+                "action": "continue_monitoring",
+                "reversion_signal": "ltf_zscore",
+                "reversion_threshold": 0.1
+              }
+            }
+          },
+          "stop_loss_exit": {
+            "enabled": true,
+            "max_loss_dollar": 30.0,
+            "zscore_stops": {
+              "long_stop_zscore": -4.0,
+              "short_stop_zscore": 4.0
+            }
+          },
+          "time_based_exit": {
+            "enabled": true,
+            "max_hold_hours": 96
+          }
+        }
+      }
+    }
+  }
+}
