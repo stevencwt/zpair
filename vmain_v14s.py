@@ -594,7 +594,8 @@ class TradingApplication:
             logger.debug_print("Initializing modular strategy engine...", "TRADING")
             if MODULAR_STRATEGIES_AVAILABLE and self.cfg.get("trading_decision", {}).get("use_modular_strategies", False):
                 try:
-                    self.modular_engine = ModularDecisionEngine(self.cfg)
+                    # PHASE 3: Pass trading mode to strategy engine for mode-specific strategies
+                    self.modular_engine = ModularDecisionEngine(self.cfg, self.trading_mode)
                     logger.debug_print("Modular strategy engine initialized successfully", "TRADING")
                 except Exception as e:
                     logger.debug_print(f"Failed to initialize modular strategy engine: {e}", "TRADING")

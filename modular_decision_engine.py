@@ -58,29 +58,37 @@ class ModularDecisionEngine:
     ENHANCED: Dual scaling mode contextual messaging support.
     """
     
-    def __init__(self, config: Dict[str, Any]):
+    def __init__(self, config: Dict[str, Any], trading_mode: Optional[Dict[str, Any]] = None):
         self.config = config
         self.last_decision_time = 0.0
         self.decision_cooldown = 3.0
         
+        # PHASE 3: Store trading mode for mode-specific strategy selection
+        self.trading_mode = trading_mode or {"name": "pairs_trading"}
+        self.mode_name = self.trading_mode.get("name", "pairs_trading")
+        
+        # PHASE 3: Mode-specific strategy registries
+        self._initialize_strategy_registries()
+        
+        #These are now defined inside _initialize_strate, hence these lines below are removed:
         # Entry strategy registry (unchanged)
-        self.ENTRY_STRATEGIES = {
-            "htf_bias_ltf_timing": HTFBiasLTFTimingEntry,
-        }
-        
+        #self.ENTRY_STRATEGIES = {
+        #    "htf_bias_ltf_timing": HTFBiasLTFTimingEntry,
+        #}
+        #
         # UPDATED: Take-profit strategy registry with modular imports
-        self.TAKE_PROFIT_STRATEGIES = {
-            "hit_and_run_profit": HitAndRunProfit,
-            "let_profit_run_profit": LetProfitRun,
-            "trailing_stop_profit": TrailingStopProfit,
-        }
-        
+        #self.TAKE_PROFIT_STRATEGIES = {
+        #    "hit_and_run_profit": HitAndRunProfit,
+        #    "let_profit_run_profit": LetProfitRun,
+        #    "trailing_stop_profit": TrailingStopProfit,
+        #}
+        #
         # UPDATED: Cut-loss strategy registry - fully modular
-        self.CUT_LOSS_STRATEGIES = {
-            "multi_criteria_stop": MultiCriteriaStopLoss,
-            "simple_scaling_strategy": SimpleScalingStrategy,
-            "extreme_scaling_strategy": ExtremeScalingStrategy,
-        }
+        #self.CUT_LOSS_STRATEGIES = {
+        #    "multi_criteria_stop": MultiCriteriaStopLoss,
+        #    "simple_scaling_strategy": SimpleScalingStrategy,
+        #    "extreme_scaling_strategy": ExtremeScalingStrategy,
+        #}
         
         # Load active strategies
         self.active_entry = self._load_strategy("entry", self.ENTRY_STRATEGIES)
@@ -94,6 +102,7 @@ class ModularDecisionEngine:
         self.position_aggregator = PositionAggregator()
         
         print(f"[MODULAR] Unified modular decision engine initialized with context-specific analysis and fully modular strategies")
+        print(f"[MODULAR] Trading mode: {self.mode_name}")
         print(f"[MODULAR] Active entry strategy: {self._get_active_strategy_name('entry')}")
         print(f"[MODULAR] Active profit strategy: {self._get_active_strategy_name('take_profit')}")
         print(f"[MODULAR] Active loss strategy: {self._get_active_strategy_name('cut_loss')}")
@@ -127,6 +136,65 @@ class ModularDecisionEngine:
             else:
                 print(f"[MODULAR ERROR] No {category} strategies available")
                 return None
+
+    def _initialize_strategy_registries(self):
+        """
+        Initialize strategy registries based on trading mode.
+        PHASE 3: Mode-aware strategy selection
+        """
+        if self.mode_name == "pairs_trading":
+            # Existing pairs trading strategies
+            self.ENTRY_STRATEGIES = {
+                "htf_bias_ltf_timing": HTFBiasLTFTimingEntry,
+            }
+            
+            self.TAKE_PROFIT_STRATEGIES = {
+                "hit_and_run_profit": HitAndRunProfit,
+                "let_profit_run_profit": LetProfitRun,
+                "trailing_stop_profit": TrailingStopProfit,
+            }
+            
+            self.CUT_LOSS_STRATEGIES = {
+                "multi_criteria_stop": MultiCriteriaStopLoss,
+                "simple_scaling_strategy": SimpleScalingStrategy,
+                "extreme_scaling_strategy": ExtremeScalingStrategy,
+            }
+            
+        elif self.mode_name == "single_asset":
+            # PHASE 3: Single asset strategies (when implemented)
+            # For now, use placeholder that will trigger "not implemented" message
+            self.ENTRY_STRATEGIES = {}
+            self.TAKE_PROFIT_STRATEGIES = {}
+            self.CUT_LOSS_STRATEGIES = {}
+            
+            print(f"[MODULAR] Single asset mode detected - strategies not yet implemented")
+            print(f"[MODULAR] Falling back to pairs trading strategies for now")
+            
+            # Fallback to pairs strategies temporarily
+            self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
+            self.TAKE_PROFIT_STRATEGIES = {"hit_and_run_profit": HitAndRunProfit}
+            self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
+            
+        elif self.mode_name == "dual_hybrid":
+            # PHASE 3: Dual hybrid strategies (when implemented)
+            self.ENTRY_STRATEGIES = {}
+            self.TAKE_PROFIT_STRATEGIES = {}
+            self.CUT_LOSS_STRATEGIES = {}
+            
+            print(f"[MODULAR] Dual hybrid mode detected - strategies not yet implemented")
+            print(f"[MODULAR] Falling back to pairs trading strategies for now")
+            
+            # Fallback to pairs strategies temporarily
+            self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
+            self.TAKE_PROFIT_STRATEGIES = {"let_profit_run_profit": LetProfitRun}
+            self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
+            
+        else:
+            # Unknown mode - use pairs trading as safe default
+            print(f"[MODULAR] Unknown trading mode: {self.mode_name}, defaulting to pairs_trading")
+            self.ENTRY_STRATEGIES = {"htf_bias_ltf_timing": HTFBiasLTFTimingEntry}
+            self.TAKE_PROFIT_STRATEGIES = {"hit_and_run_profit": HitAndRunProfit}
+            self.CUT_LOSS_STRATEGIES = {"simple_scaling_strategy": SimpleScalingStrategy}
     
     def _get_active_strategy_name(self, category: str) -> str:
         """Get the name of the currently active strategy for a category"""
