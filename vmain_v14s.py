@@ -194,14 +194,14 @@ except ImportError as e:
     logger.debug_print(f"Market barometer not available: {e}", "IMPORTS")
 
 # Import trading decision module
-try:
-    # logger.debug_print("Importing trading decision module...", "IMPORTS")
-    from trading_decision import make_trading_decision
-    TRADING_DECISION_AVAILABLE = True
-    # logger.debug_print("    logger.debug_print("Trading decision module imported successfully", "IMPORTS")
-except ImportError as e:
-    TRADING_DECISION_AVAILABLE = False
-    logger.debug_print(f"Trading decision module not available: {e}", "IMPORTS")
+#try:
+#    # logger.debug_print("Importing trading decision module...", "IMPORTS")
+#    from trading_decision import make_trading_decision
+#    TRADING_DECISION_AVAILABLE = True
+#    # logger.debug_print("    logger.debug_print("Trading decision module imported successfully", "IMPORTS")
+#except ImportError as e:
+#    TRADING_DECISION_AVAILABLE = False
+#    logger.debug_print(f"Trading decision module not available: {e}", "IMPORTS")
 
 # Import modular strategy engine
 try:
@@ -459,6 +459,42 @@ class TradingApplication:
             self.cfg = self.config_manager.load_config(validate=True)
             self.cfg_path = cfg_path 
 
+            # ========================================================================
+            # PHASE 1: TRADING MODE VALIDATION
+            # ========================================================================
+            # Part of: Multi-Mode Trading System Enhancement
+            # Purpose: Validate trading mode at startup and enforce mode requirements
+            # Zero Deletion Compliance: New code block, no existing code modified
+            # ========================================================================
+            try:
+                logger.debug_print("Validating trading mode configuration...", "MODE")
+                from trading_mode_validator import TradingModeValidator
+                
+                mode_validator = TradingModeValidator(self.cfg)
+                self.trading_mode = mode_validator.validate_and_get_mode()
+                
+                # Log mode information with clear visual separation
+                logger.debug_print("="*70, "MODE")
+                logger.debug_print(f"TRADING MODE: {self.trading_mode['name'].upper()}", "MODE")
+                logger.debug_print(f"Status: {self.trading_mode['status']}", "MODE")
+                logger.debug_print(f"Description: {self.trading_mode['description']}", "MODE")
+                logger.debug_print(f"Active Assets: {self.trading_mode['active_assets']}", "MODE")
+                logger.debug_print(f"Asset Count: {self.trading_mode['asset_count']}/{self.trading_mode['required_assets']}", "MODE")
+                logger.debug_print(f"Data Requirements: {', '.join(self.trading_mode['data_requirements'])}", "MODE")
+                logger.debug_print("="*70, "MODE")
+                
+                # Store mode name for easy access throughout the application
+                self.mode_name = self.trading_mode['name']
+                
+                logger.debug_print("Trading mode validation completed successfully", "MODE")
+                
+            except Exception as e:
+                logger.debug_print(f"Trading mode validation failed: {e}", "MODE")
+                raise
+            # ========================================================================
+            # END PHASE 1: TRADING MODE VALIDATION
+            # ========================================================================
+
             # NOW INITIALIZE GOVERNOR FROM THE LOADED CFG
             gov_settings = self.cfg.get('governor_settings', {})
             self.manual_pause_active = gov_settings.get('manual_pause_active', False)
@@ -663,7 +699,7 @@ class TradingApplication:
         logger.debug_print(f"Buffer System Available: {service_status['buffer_system_available']}", "STATUS")
         logger.debug_print(f"API Efficiency: {'600+ calls saved per cycle' if service_status['buffer_mode_enabled'] else 'Legacy mode'}", "STATUS")
         logger.debug_print(f"Triple-timeframe Analysis: {'ENABLED' if service_status['buffer_mode_enabled'] else 'SINGLE TIMEFRAME'}", "STATUS")
-        logger.debug_print(f"Trading Decision: {'ENABLED' if TRADING_DECISION_AVAILABLE else 'DISABLED'}", "STATUS")
+        #logger.debug_print(f"Trading Decision: {'ENABLED' if TRADING_DECISION_AVAILABLE else 'DISABLED'}", "STATUS")
         # legacy code removed: logger.debug_print(f"Unified Position Simulation: {'ENABLED' if self.trade_simulator else 'DISABLED'}", "STATUS")
         logger.debug_print(f"Unified Position Simulation: {'ENABLED' if getattr(self, 'execution_engine', None) else 'DISABLED'}", "STATUS")
         logger.debug_print(f"Chart Orchestrator: {'ENABLED' if self.chart_orchestrator else 'DISABLED'}", "STATUS")
