@@ -480,43 +480,34 @@
         const CONFIG_URL = '';
         const THRESHOLDS = { corr_min: 0.16, vol_min: 0.17 };
         // ============================================================
-        // DYNAMIC CONFIGURATION LOADER
+        // FIX: DYNAMIC DATA DIRECTORY RESOLUTION
         // ============================================================
-        let POS_DIR = "aggregated_SOL_MELANIA_5m1m"; // Default Fallback
-
-        async function resolveConfiguration() {
-            const params = new URLSearchParams(window.location.search);
-            const configName = params.get('config'); 
-            
-            if (!configName) return;
-
+        function getPosDirFromUrl() {
             try {
-                // 1. Fetch the actual Config JSON file specified in URL
-                const response = await fetch(configName);
-                if (response.ok) {
-                    const configData = await response.json();
+                // Parse the ?config= parameter from the URL
+                const params = new URLSearchParams(window.location.search);
+                const configName = params.get('config'); 
+                
+                if (configName) {
+                    // Logic: Transform 'config_ETH_BTC_5m1m.json' -> 'aggregated_ETH_BTC_5m1m'
+                    // 1. Replace prefix 'config_' with 'aggregated_'
+                    let dirName = configName.replace('config_', 'aggregated_');
                     
-                    // 2. Extract the exact directory from the JSON content
-                    if (configData.trade_simulation?.storage?.positions_directory) {
-                        POS_DIR = configData.trade_simulation.storage.positions_directory;
-                        console.log("✅ POS_DIR loaded from config file:", POS_DIR);
-                        
-                        // 3. Refresh panels now that we have the correct path
-                        if(document.getElementById("history-content").style.maxHeight) loadHistory(currentHistMode);
-                        if(document.getElementById("closed-history-content").style.maxHeight) loadClosedHistory(currentClosedMode);
+                    // 2. Remove '.json' extension if present
+                    if (dirName.toLowerCase().endsWith('.json')) {
+                        dirName = dirName.substring(0, dirName.length - 5);
                     }
+                    console.log("Dynamic POS_DIR resolved:", dirName);
+                    return dirName;
                 }
             } catch (e) {
-                console.error("⚠️ Failed to load config file:", e);
-                // Fallback: Use simple string replacement if file load fails
-                let dirName = configName.replace('config_', 'aggregated_').replace('.json', '');
-                POS_DIR = dirName;
-                console.log("Fallback POS_DIR derived from URL:", POS_DIR);
+                console.error("Error resolving data directory:", e);
             }
+            // Fallback default if no URL param exists
+            return "aggregated_SOL_MELANIA_5m1m"; 
         }
 
-        // Initialize configuration immediately
-        resolveConfiguration();
+        const POS_DIR = getPosDirFromUrl();
         
         let currentHistMode = 'REAL';       // Changed default to REAL
         let currentClosedMode = 'REAL';     // Changed default to REAL
@@ -702,17 +693,6 @@
         }
         
         function render(data) {
-            
-            // [NEW] Attempt to extract storage path from live market state if available
-            // This covers the "better still" requirement if backend supports it
-            if (data.config?.trade_simulation?.storage?.positions_directory) {
-                const liveDir = data.config.trade_simulation.storage.positions_directory;
-                if (liveDir && liveDir !== POS_DIR) {
-                    POS_DIR = liveDir;
-                    console.log("✅ POS_DIR updated from Live Market State:", POS_DIR);
-                }
-            }
-            
             const portfolio = data.portfolio || { mode: 'SIM' };
             
             document.getElementById('asset-display').textContent = data.symbol || "UNKNOWN";
